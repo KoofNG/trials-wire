@@ -4,7 +4,7 @@ import 'package:wirepay/core/config/services/storage_service/storage_service.dar
 import 'package:wirepay/core/config/view_model/base_view_model.dart';
 import 'package:wirepay/core/constants/string_constant.dart';
 import 'package:wirepay/main.dart';
-import 'package:wirepay/modules/home_module/presentation/home_screen.dart';
+import 'package:wirepay/modules/home_module/presentation/screens/home_screen.dart';
 import 'package:wirepay/modules/login/data/models/login_data.dart';
 import 'package:wirepay/modules/login/data/models/user_details_data.dart';
 import 'package:wirepay/modules/login/data/repositories/login_repo.dart';
@@ -40,7 +40,9 @@ class LoginScreenViewModel extends BaseViewModel {
 
     if (response.isSuccessful) {
       final _token = response.data.token;
+      final _wirePayTag = response.data.wirepayTag;
       _storageService.setString(key: TOKEN, value: _token);
+      _storageService.setString(key: WIREPAYTAG, value: _wirePayTag);
       Navigator.push(
         navigatorKey.currentContext,
         MaterialPageRoute(
