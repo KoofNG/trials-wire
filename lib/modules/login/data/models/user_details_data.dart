@@ -43,9 +43,9 @@ class ResponseUserDetailsDto {
     hasWalletUsername = json['has_wallet_username'];
     wirepayTag = json['wirepay_tag'];
     if (json['wallets'] != null) {
-      wallets = new List<Wallets>();
+      wallets = <Wallets>[];
       json['wallets'].forEach((v) {
-        wallets.add(new Wallets.fromJson(v));
+        wallets.add(Wallets.fromJson(v));
       });
     }
     createdAt = json['created_at'];

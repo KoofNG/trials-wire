@@ -7,6 +7,7 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider<LoginScreenViewModel>(
     create: (_) => LoginScreenViewModel(
       loginRepository: di(),
+      storageService: di(),
     ),
   ),
 ];
