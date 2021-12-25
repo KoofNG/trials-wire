@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 abstract class NetworkService {
+  // Get Token
+  Future<String> getToken();
+
   // Get Response
   Future<http.Response> getHttpResponse({@required Uri uri});
 
@@ -20,5 +23,5 @@ abstract class NetworkService {
   // Delete Method
   Future<http.Response> patchHttpResponse({Uri uri, Object body});
 
-  Map<String, String> getRequestHeaders({bool isNotAuthenticated});
+  Future<Map<String, String>> getRequestHeaders({bool isNotAuthenticated});
 }

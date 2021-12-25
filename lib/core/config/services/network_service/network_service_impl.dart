@@ -1,16 +1,26 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:wirepay/core/config/services/storage_service/storage_service.dart';
+import 'package:wirepay/core/constants/string_constant.dart';
 import 'network_service_abstract.dart';
 
 class NetworkServiceImpl implements NetworkService {
   @override
-  Map<String, String> getRequestHeaders({bool isNotAuthenticated}) {
+  Future<String> getToken() async {
+    String _token = await StorageService().getString(key: TOKEN);
+    return _token ?? '';
+  }
+
+  @override
+  Future<Map<String, String>> getRequestHeaders({bool isNotAuthenticated}) async {
     Map<String, String> headers = <String, String>{};
     headers['Content-Type'] = 'application/json';
     // TODO: Add other headers parameters here
     if (!isNotAuthenticated) {
-      String token = jsonDecode('token' ?? '');
+      var token = await getToken();
+      print(token);
+      
       headers['Authorization'] = 'Bearer $token';
     }
     return headers;
@@ -22,7 +32,7 @@ class NetworkServiceImpl implements NetworkService {
     res = await http
         .delete(
           uri,
-          headers: getRequestHeaders(),
+          headers: await getRequestHeaders(),
           body: jsonEncode(body),
         )
         .timeout(Duration(seconds: 45));
@@ -33,7 +43,7 @@ class NetworkServiceImpl implements NetworkService {
   Future<http.Response> getHttpResponse({Uri uri}) async {
     http.Response res;
     res = await http
-        .get(uri, headers: getRequestHeaders())
+        .get(uri, headers: await getRequestHeaders(isNotAuthenticated: false))
         .timeout(Duration(seconds: 45));
     return res;
   }
@@ -44,7 +54,7 @@ class NetworkServiceImpl implements NetworkService {
     res = await http
         .patch(
           uri,
-          headers: getRequestHeaders(),
+          headers: await getRequestHeaders(),
           body: jsonEncode(body),
         )
         .timeout(Duration(seconds: 45));
@@ -57,7 +67,7 @@ class NetworkServiceImpl implements NetworkService {
     res = await http
         .post(
           uri,
-          headers: getRequestHeaders(),
+          headers: await getRequestHeaders(),
           body: jsonEncode(body),
         )
         .timeout(Duration(seconds: 45));
@@ -70,7 +80,7 @@ class NetworkServiceImpl implements NetworkService {
     res = await http
         .post(
           uri,
-          headers: getRequestHeaders(),
+          headers: await getRequestHeaders(),
           body: jsonEncode(body),
         )
         .timeout(Duration(seconds: 45));
@@ -83,7 +93,7 @@ class NetworkServiceImpl implements NetworkService {
     res = await http
         .post(
           uri,
-          headers: getRequestHeaders(isNotAuthenticated: true),
+          headers: await getRequestHeaders(isNotAuthenticated: true),
           body: jsonEncode(body),
         )
         .timeout(Duration(seconds: 45));
