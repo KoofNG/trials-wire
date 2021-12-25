@@ -3,6 +3,7 @@ import 'package:provider/single_child_widget.dart';
 import 'package:wirepay/core/config/service_locator/services_locator.dart';
 import 'package:wirepay/modules/home_module/presentation/view_model/home_module_view_model.dart';
 import 'package:wirepay/modules/login/presentation/view_model/login_screen_view_model.dart';
+import 'package:wirepay/modules/wallet_module/presentation/view_model/wallet_screen_view_model.dart';
 
 List<SingleChildWidget> providers = [
   ChangeNotifierProvider<LoginScreenViewModel>(
@@ -15,5 +16,8 @@ List<SingleChildWidget> providers = [
     create: (_) => HomeModuleViewModel(
       storageService: di(),
     ),
+  ),
+  ChangeNotifierProvider<WalletScreenViewModel>(
+    create: (_) => WalletScreenViewModel(),
   ),
 ];

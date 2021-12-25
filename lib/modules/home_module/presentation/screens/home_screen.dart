@@ -5,6 +5,7 @@ import 'package:wirepay/core/widgets/base_widget.dart';
 import 'package:wirepay/modules/home_module/presentation/view_model/home_module_view_model.dart';
 import 'package:wirepay/modules/home_module/presentation/widgets/animated_index_widget.dart';
 import 'package:wirepay/modules/home_module/presentation/widgets/bottom_navbar_widget.dart';
+import 'package:wirepay/modules/wallet_module/presentation/screens/wallet_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             child: AnimatedIndexedStack(
               index: model.currentTabIndex,
               children: [
-                Placeholder(),
+                WalletScreen(),
                 Placeholder(),
                 Placeholder(),
                 Placeholder(),

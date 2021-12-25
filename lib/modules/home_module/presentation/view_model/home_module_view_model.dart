@@ -26,7 +26,6 @@ class HomeModuleViewModel extends BaseViewModel {
 
   Future<void> getUserWireTag() async {
     _userWireTag = await _storageService.getString(key: WIREPAYTAG);
-    print(_userWireTag);
   }
 
   void setPageIndex({int page}) {
