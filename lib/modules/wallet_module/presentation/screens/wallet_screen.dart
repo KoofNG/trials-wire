@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wirepay/core/config/service_locator/services_locator.dart';
 import 'package:wirepay/core/widgets/base_widget.dart';
+import 'package:wirepay/modules/wallet_module/data/models/wallet_model.dart';
 import 'package:wirepay/modules/wallet_module/presentation/view_model/wallet_screen_view_model.dart';
 
 class WalletScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class WalletScreen extends StatelessWidget {
     return BaseWidget<WalletScreenViewModel>(
       model: WalletScreenViewModel(
         service: di(),
+        walletRepository: di(),
       ),
       onModelReady: (model) async {
         await model.getUserWireTag();
@@ -149,9 +151,36 @@ class WalletScreen extends StatelessWidget {
                             )
                           : ListView.builder(
                               itemBuilder: (context, index) {
-                                return Text('data');
+                                WalletDto _walletDto = model.wallets[index];
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        _walletDto.currency,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        _walletDto.availableBalance
+                                                .toDouble()
+                                                .toStringAsFixed(2) +
+                                            ' ' +
+                                            _walletDto.currency,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16.0),
+                                      ),
+                                    ],
+                                  ),
+                                );
                               },
-                              itemCount: 50,
+                              itemCount: model.wallets.length,
                             ),
                     ),
                   ),
