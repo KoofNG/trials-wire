@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'core/services/provider_service/providers.dart';
+import 'core/config/services/provider_service/providers.dart';
 import 'modules/login/presentation/screen/login_screen.dart';
+
+final navigatorKey = GlobalKey<NavigatorState>();
 
 class WirePay extends StatelessWidget {
   @override
@@ -14,6 +16,7 @@ class WirePay extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        navigatorKey: navigatorKey,
         home: LoginScreen(),
       ),
     );
