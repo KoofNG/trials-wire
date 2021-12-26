@@ -32,11 +32,14 @@ class WalletScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Color(0xFF303F9F),
                     ),
-                    padding: EdgeInsets.all(25.0),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 25.0,
+                      horizontal: 20.0,
+                    ),
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 30.0),
+                          padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 40.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -74,10 +77,12 @@ class WalletScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                    Color(0xff001970),
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(10.0),
                                   ),
+                                  primary: Color(0xff001970),
                                 ),
                                 onPressed: () {},
                                 child: Container(
@@ -97,10 +102,12 @@ class WalletScreen extends StatelessWidget {
                             SizedBox(width: 20.0),
                             Expanded(
                               child: ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                    Color(0xff001970),
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(10.0),
                                   ),
+                                  primary: Color(0xff001970),
                                 ),
                                 onPressed: () {},
                                 child: Container(
@@ -129,7 +136,7 @@ class WalletScreen extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 25.0,
+                        horizontal: 20.0,
                         vertical: 10.0,
                       ),
                       child: Text(

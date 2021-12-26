@@ -31,7 +31,7 @@ class BottomNavBarItem extends StatelessWidget {
           item.buttonName,
           style: TextStyle(
             color: isActive ? Color(0xFF001970) : Colors.black,
-            fontSize: 14.0,
+            fontSize: 12.0,
           ),
         ),
       ],

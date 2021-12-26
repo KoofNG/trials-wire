@@ -27,7 +27,7 @@ class WalletWidget extends StatelessWidget {
                 ' ' +
                 walletDto.currency,
             style: TextStyle(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               fontSize: 16.0,
             ),
           ),
