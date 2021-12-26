@@ -4,6 +4,7 @@ import 'package:wirepay/core/config/service_locator/services_locator.dart';
 import 'package:wirepay/core/widgets/base_widget.dart';
 import 'package:wirepay/modules/wallet_module/data/models/wallet_model.dart';
 import 'package:wirepay/modules/wallet_module/presentation/view_model/wallet_screen_view_model.dart';
+import 'package:wirepay/modules/wallet_module/presentation/widgets/wallet_widget.dart';
 
 class WalletScreen extends StatelessWidget {
   @override
@@ -142,46 +143,26 @@ class WalletScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 25.0,
-                        vertical: 5.0,
-                      ),
                       child: model.busy
                           ? Center(
                               child: CircularProgressIndicator(
                                 backgroundColor: Color(0xFF303F9F),
                               ),
                             )
-                          : ListView.builder(
+                          : ListView.separated(
+                              separatorBuilder: (context, index) {
+                                return Divider(
+                                  color: Colors.grey[400],
+                                );
+                              },
                               itemBuilder: (context, index) {
                                 WalletDto _walletDto = model.wallets[index];
                                 return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        _walletDto.currency,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Text(
-                                        _walletDto.availableBalance
-                                                .toDouble()
-                                                .toStringAsFixed(2) +
-                                            ' ' +
-                                            _walletDto.currency,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16.0),
-                                      ),
-                                    ],
-                                  ),
-                                );
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0, horizontal: 20.0),
+                                    child: WalletWidget(
+                                      walletDto: _walletDto,
+                                    ));
                               },
                               itemCount: model.wallets.length,
                             ),
