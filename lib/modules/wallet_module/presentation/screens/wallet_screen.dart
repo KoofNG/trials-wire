@@ -20,6 +20,7 @@ class WalletScreen extends StatelessWidget {
       },
       builder: (context, model, child) {
         return Scaffold(
+          backgroundColor: Colors.transparent,
           body: SafeArea(
             child: Container(
               height: MediaQuery.of(context).size.height,
@@ -143,6 +144,7 @@ class WalletScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
+                      color: Colors.white,
                       child: model.busy
                           ? Center(
                               child: CircularProgressIndicator(
