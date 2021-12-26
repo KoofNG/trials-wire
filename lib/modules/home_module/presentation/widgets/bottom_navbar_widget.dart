@@ -22,7 +22,7 @@ class BottomNavBarItem extends StatelessWidget {
           decoration: BoxDecoration(),
           child: Icon(
             item.buttonIcon,
-            color: isActive ? Colors.blue[400] : Colors.black12,
+            color: isActive ? Color(0xFF001970) : Colors.black12,
             size: 34.0,
           ),
         ),
@@ -30,7 +30,7 @@ class BottomNavBarItem extends StatelessWidget {
         Text(
           item.buttonName,
           style: TextStyle(
-            color: isActive ? Colors.blue[400] : Colors.black,
+            color: isActive ? Color(0xFF001970) : Colors.black,
             fontSize: 14.0,
           ),
         ),

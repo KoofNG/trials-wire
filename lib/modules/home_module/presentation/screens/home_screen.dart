@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (context, model, child) {
         return Scaffold(
+          backgroundColor: Color(0xFF303F9F),
           body: SafeArea(
             maintainBottomViewPadding: true,
             child: AnimatedIndexedStack(

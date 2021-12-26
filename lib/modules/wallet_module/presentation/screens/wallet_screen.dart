@@ -28,7 +28,7 @@ class WalletScreen extends StatelessWidget {
                     height: 220.0,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Colors.blue[400],
+                      color: Color(0xFF303F9F),
                     ),
                     padding: EdgeInsets.all(25.0),
                     child: Column(
@@ -74,7 +74,7 @@ class WalletScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                    Colors.pinkAccent,
+                                    Color(0xff001970),
                                   ),
                                 ),
                                 onPressed: () {},
@@ -97,7 +97,7 @@ class WalletScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                    Colors.pinkAccent,
+                                    Color(0xff001970),
                                   ),
                                 ),
                                 onPressed: () {},
@@ -135,6 +135,7 @@ class WalletScreen extends StatelessWidget {
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
+                          color: Color(0xFF001970),
                         ),
                       ),
                     ),
@@ -147,7 +148,9 @@ class WalletScreen extends StatelessWidget {
                       ),
                       child: model.busy
                           ? Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                backgroundColor: Color(0xFF303F9F),
+                              ),
                             )
                           : ListView.builder(
                               itemBuilder: (context, index) {
